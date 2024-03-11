@@ -5,10 +5,11 @@ type DiceCountMapper = {
 };
 
 export default class Yatzy {
-  private readonly dice: number[];
+  private readonly dice: DiceNum[];
   private readonly diceCountMapper: DiceCountMapper;
   private yatzy = false;
-  constructor(d1: number, d2: number, d3: number, d4: number, d5: number) {
+
+  constructor(d1: DiceNum, d2: DiceNum, d3: DiceNum, d4: DiceNum, d5: DiceNum) {
     this.dice = [d1, d2, d3, d4, d5];
     this.diceCountMapper = this.dice.reduce(
       (acc, cur) => ({
@@ -48,7 +49,7 @@ export default class Yatzy {
     return this.dice.reduce((acc, curr) => acc + curr, 0);
   }
 
-  ThreeOfAKind(): number {
+  threeOfAKind(): number {
     if (this.checkQuantity(3)) {
       return this.dice.reduce((acc, curr) => acc + curr, 0);
     } else {
@@ -56,7 +57,7 @@ export default class Yatzy {
     }
   }
 
-  FourOfAKind(): number {
+  fourOfAKind(): number {
     if (this.checkQuantity(4)) {
       return this.dice.reduce((acc, curr) => acc + curr, 0);
     } else {
@@ -64,7 +65,7 @@ export default class Yatzy {
     }
   }
 
-  FullHouse(): number {
+  fullHouse(): number {
     if (this.checkQuantity(3) && this.checkQuantity(2)) {
       return this.dice.reduce((acc, curr) => acc + curr, 0);
     } else {

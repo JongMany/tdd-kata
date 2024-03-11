@@ -1,15 +1,5 @@
 import Yatzy from "../src/yatzy";
 
-describe("chances", () => {
-  it("chance 메서드는 모든 dice 눈의 합을 넘긴 값을 반환합니다.", () => {
-    const yatzy1 = new Yatzy(1, 2, 3, 4, 5);
-    const yatzy2 = new Yatzy(1, 3, 3, 4, 5);
-
-    expect(yatzy1.chance()).toBe(15);
-    expect(yatzy2.chance()).toBe(16);
-  });
-});
-
 describe("Yatzy's Upper section", () => {
   it("ones 메서드는 1을 필터링해서 더한 값을 반환합니다..", () => {
     const yatzy1 = new Yatzy(1, 2, 1, 4, 5);
@@ -55,40 +45,48 @@ describe("Yatzy's Upper section", () => {
 });
 
 describe("Yatzy's Lower section", () => {
+  it("chance 메서드는 모든 dice 눈의 합을 넘긴 값을 반환합니다.", () => {
+    const yatzy1 = new Yatzy(1, 2, 3, 4, 5);
+    const yatzy2 = new Yatzy(1, 3, 3, 4, 5);
+
+    expect(yatzy1.chance()).toBe(15);
+    expect(yatzy2.chance()).toBe(16);
+  });
+
   it("ThreeOfAKind 메서드는 3개의 눈이 동일할 때, 주사위 5개의 합을 반환합니다..", () => {
     const yatzy = new Yatzy(3, 3, 3, 4, 4);
 
-    expect(yatzy.ThreeOfAKind()).toBe(17);
+    expect(yatzy.threeOfAKind()).toBe(17);
   });
 
   it("ThreeOfAKind 메서드는 3개의 눈이 동일하지 않는 경우, 에러를 반환합니다...", () => {
     const yatzy = new Yatzy(3, 3, 3, 3, 4);
 
-    expect(() => yatzy.ThreeOfAKind()).toThrow("No three of a kind");
+    expect(() => yatzy.threeOfAKind()).toThrow("No three of a kind");
   });
 
   it("FourOfAKind 메서드는 4개의 눈이 동일할 때, 주사위 5개의 합을 반환합니다..", () => {
     const yatzy = new Yatzy(3, 3, 3, 3, 4);
 
-    expect(yatzy.FourOfAKind()).toBe(16);
+    expect(yatzy.fourOfAKind()).toBe(16);
   });
 
   it("FourOfAKind 메서드는 4개의 눈이 동일하지 않는 경우, 에러를 반환합니다...", () => {
     const yatzy = new Yatzy(3, 3, 3, 3, 3);
 
-    expect(() => yatzy.FourOfAKind()).toThrow("No four of a kind");
+    expect(() => yatzy.fourOfAKind()).toThrow("No four of a kind");
   });
 
   it("FullHouse 메서드는 3개의 눈이 동일하고, 2개의 눈이 동일할 때, 주사위 5개의 합을 반환합니다..", () => {
     const yatzy = new Yatzy(3, 3, 3, 4, 4);
 
-    expect(yatzy.FullHouse()).toBe(17);
+    expect(yatzy.fullHouse()).toBe(17);
   });
 
   it("FullHouse 메서드는 3개의 눈이 동일하지 않거나, 2개의 눈이 동일하지 않는 경우, 에러를 반환합니다...", () => {
     const yatzy = new Yatzy(3, 3, 3, 4, 5);
 
-    expect(() => yatzy.FullHouse()).toThrow("No full house");
+    expect(() => yatzy.fullHouse()).toThrow("No full house");
   });
 
   it("Yahtzee 메서드는 5개의 눈이 동일할 때, 50을 반환하고, yatzee 값을 true로 바꿉니다.", () => {
