@@ -10,3 +10,5 @@ it("spy car", () => {
   expect(spyCar).toHaveBeenCalledTimes(1);
   expect(result).toBe("vroom");
 });
+
+// https://haeguri.github.io/2020/12/21/clean-up-jest-mock/
